@@ -28,10 +28,10 @@ A email designated to receive messages from the server. Examples:
  	
  	Some might want this to be the same as the APP_EMAIL, others might want to create a designated gmail address for it
 */ 	
-	define('SYSTEM_EMAIL', 'root@p2.kolbasification.biz'); 
+	define('SYSTEM_EMAIL', 'skolbasov@gmail.com'); 
 
 # Default DB name for this app
-	define('DB_NAME', "p2_kolbasification_biz"); 
+	define('DB_NAME', "kolbasif_p2_kolbasification_biz"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
