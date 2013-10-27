@@ -31,7 +31,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'root@p2.kolbasification.biz'); 
 
 # Default DB name for this app
-	define('DB_NAME', 'myapp_com'); 
+	define('DB_NAME', "p2.kolbasification.biz"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
