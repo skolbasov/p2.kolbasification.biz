@@ -28,4 +28,14 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
 }
 
+public function index() {
+	
+	$this->template->content=View::instance('v_posts_index');
+	$this->template->title="Posts";
+	$q="SELECT posts .*, users.first_name, users.last_name FROM posts INNER JOIN users ON posts.user_id=users.user_id";
+	$posts=DB::instance(DB_NAME)->select_rows($q);
+	$this->template->content->posts=$posts;
+	echo $this->template;
+}
+
 }
