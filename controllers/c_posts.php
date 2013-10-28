@@ -28,6 +28,29 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
 }
 
+public function users() {
+
+    $this->template->content = View::instance("v_posts_users");
+    $this->template->title   = "Users";
+
+    $q = "SELECT *
+        FROM users";
+
+    $users = DB::instance(DB_NAME)->select_rows($q);
+
+    $q = "SELECT * 
+        FROM users_users
+        WHERE user_id = ".$this->user->user_id;
+
+    $connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
+
+    $this->template->content->users       = $users;
+    $this->template->content->connections = $connections;
+
+    echo $this->template;
+}
+
+
 public function index() {
 	
 	$this->template->content=View::instance('v_posts_index');
