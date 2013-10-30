@@ -51,11 +51,42 @@ public function users() {
 }
 
 
+public function follow($user_id_followed){
+	$data=Array(
+	"created"=>Time::now(),
+	"user_id"=>$this->user->user_id,
+	"user_id_followed"=>$user_id_followed);
+	
+	DB::instance(DB_NAME)->insert('users_users',$data);
+	Router::redirect("/posts/users");
+}
+
+public function unfollow($user_id_followed){
+	
+	$where_condition='WHERE user_id='.$this->user->user_id.' AND user_id_followed= '.$user_id_followed;
+	DB::instance(DB_NAME)->delete('users_users',$where_condition);
+	Router::redirect("/posts/users");
+	
+	
+}
 public function index() {
 	
 	$this->template->content=View::instance('v_posts_index');
-	$this->template->title="Posts";
-	$q="SELECT posts .*, users.first_name, users.last_name FROM posts INNER JOIN users ON posts.user_id=users.user_id";
+	$this->template->title="All Posts";
+	$q='SELECT 
+			posts.content,
+			posts.created,
+			posts.user_id AS post_user_id,
+			users_users.user_id AS follower_id,
+			users.first_name,
+			users.last_name
+			FROM posts
+			INNER JOIN users_users
+				 ON posts.user_id=users_users.user_id_followed
+			INNER JOIN users
+				 ON posts.user_id=users.user_id
+			WHERE users_users.user_id = '.$this->user->user_id;
+	
 	$posts=DB::instance(DB_NAME)->select_rows($q);
 	$this->template->content->posts=$posts;
 	echo $this->template;
