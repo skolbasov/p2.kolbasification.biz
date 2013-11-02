@@ -39,7 +39,7 @@ A email designated to receive messages from the server. Examples:
 # If your app is going to have outgoing emails, you should fill in your SMTP settings
 # For this you could use gmail SMTP or something like http://sendgrid.com/
 	define('SMTP_HOST', 'smtp.sendgrid.net');
-	define('SMTP_USERNAME', 'skolbasov@gmail.com');
+	define('SMTP_USERNAME', 'kolbas');
 	define('SMTP_PASSWORD', 'Kolbas#2');
 
 # For extra security, you might want to set different salts than what the core uses
