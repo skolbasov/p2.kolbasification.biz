@@ -1,22 +1,78 @@
-<?phpclass users_controller extends base_controller {public function __construct(){        parent::__construct();}public function index(){echo "This is the index page";}public function login($error=NULL) {        $this->template->content = View::instance('v_users_login');       $this->template->content->error=$error;        echo $this->template;}public function p_login() {    $_POST = DB::instance(DB_NAME)->sanitize($_POST);    $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);    $q = "SELECT user_id         FROM users         WHERE email = '".$_POST['email']."'         AND password = '".$_POST['password']."'";    $user_id = DB::instance(DB_NAME)->select_field($q);    if(!$user_id) {        Router::redirect("/users/login/error");    } else {
+<?php
+class users_controller extends base_controller {
+
+public function __construct(){
+        parent::__construct();
+
+}
+
+public function index(){
+Router::redirect("/posts");
+}
+
+public function login($error=NULL) {
+
+        $this->template->content = View::instance('v_users_login');
+       $this->template->content->error=$error;
+        echo $this->template;
+
+}
+
+public function p_login() {
+
+    $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+    $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+    $q = "SELECT user_id 
+        FROM users 
+        WHERE email = '".$_POST['email']."' 
+        AND password = '".$_POST['password']."'";
+
+    $user_id = DB::instance(DB_NAME)->select_field($q);
+
+    if(!$user_id) {
+
+        Router::redirect("/users/login/error");
+
+    } else {
     	$q = 'SELECT is_activated FROM users WHERE user_id = "'.$user_id.'"';
 		$is_activated = DB::instance(DB_NAME)->select_field($q);
 		if ($is_activated){
         	$q = "SELECT token FROM users WHERE user_id = '".$user_id."'";
-			$token = DB::instance(DB_NAME)->select_field($q);			setcookie("token", $token, strtotime('+1 year'), '/');			Router::redirect("/");    } else {
+			$token = DB::instance(DB_NAME)->select_field($q);
+			setcookie("token", $token, strtotime('+1 year'), '/');
+			Router::redirect("/");
+    } else {
             Router::redirect("/users/login/error");
             }
-            }}public function logout(){       $new_token=sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+            }
+
+}
+
+public function logout(){
+       $new_token=sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
        $data= Array("token"=>$new_token);
        DB::instance(DB_NAME)->update("users",$data, "WHERE token ='".$this->user->token."'");
        setcookie("token","",strtotime('-1 year'),'/');
-       Router::redirect("/");}public function profile($user_name = NULL){
+       Router::redirect("/");
+}
+
+public function profile($user_name = NULL){
     if(!$this->user) {
         Router::redirect('/users/login');
     }
-    $this->template->content = View::instance('v_users_profile');
-    $this->template->title   = "Profile of".$this->user->first_name;
-    echo $this->template;}public function signup() {            $this->template->content = View::instance('v_users_signup');            $this->template->title   = "Sign Up";            echo $this->template;    }
+    $this->template->content = View::instance('v_users_profile');
+    $this->template->title   = "Profile of ".$this->user->first_name;
+    echo $this->template;
+
+}
+
+public function signup() {
+
+            $this->template->content = View::instance('v_users_signup');
+            $this->template->title   = "Sign Up";
+            echo $this->template;
+
+    }
 
 public function p_activate($activation_key= NULL){
         
@@ -60,17 +116,29 @@ public function activate($error=NULL){
     echo $this->template;
 
 }
-    public function p_signup() {		//Inserting the user into the database
-			$_POST['created']=Time::now();			$_POST['modified']=Time::now();			$_POST['password']=sha1(PASSWORD_SALT.$_POST['password']);			$_POST['token']=sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
-			$_POST['activation_key']=str_shuffle($_POST['password'].$POST['token']);			$activation_link="http://".$_SERVER['SERVER_NAME']."/users/p_activate/".$_POST['activation_key'];
+
+public function p_signup() {
+
+		//Inserting the user into the database
+			$_POST['created']=Time::now();
+			$_POST['modified']=Time::now();
+			$_POST['password']=sha1(PASSWORD_SALT.$_POST['password']);
+			$_POST['token']=sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
+			$_POST['activation_key']=str_shuffle($_POST['password'].$POST['token']);
+			$activation_link="http://".$_SERVER['SERVER_NAME']."/users/p_activate/".$_POST['activation_key'];
 			$name=$_POST['first_name'];
 			$name.=" ";
-			$name.=$_POST['last_name'];			$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
+			$name.=$_POST['last_name'];
+			$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 			
 		//Sending the confirmation mail
 			$to[]=Array("name"=>$name, "email"=>$_POST['email']);
 			$subject="Confirmation letter";
 			$from=Array("name"=>APP_NAME, "email"=>APP_EMAIL);
 			$body="Dear ". $name ." this is the confirmation letter of your registration to Sblog. To activate your account please follow the <a href='". $activation_link ."'>activation link</a>";		
-			$email = Email::send($to, $from, $subject, $body, false, $cc, $bcc);			
-			Router::redirect('/');        }}
+			$email = Email::send($to, $from, $subject, $body, false, $cc, $bcc);
+			
+			Router::redirect('/');    
+    }
+
+}
