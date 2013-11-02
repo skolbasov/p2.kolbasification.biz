@@ -63,7 +63,9 @@ public function activate($error=NULL){
     public function p_signup() {		//Inserting the user into the database
 			$_POST['created']=Time::now();			$_POST['modified']=Time::now();			$_POST['password']=sha1(PASSWORD_SALT.$_POST['password']);			$_POST['token']=sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 			$_POST['activation_key']=str_shuffle($_POST['password'].$POST['token']);			$activation_link="http://".$_SERVER['SERVER_NAME']."/users/p_activate/".$_POST['activation_key'];
-			$name=$_POST['first_name']. " " .$POST['last_name'];			$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
+			$name=$_POST['first_name'];
+			$name.=" ";
+			$name.=$_POST['last_name'];			$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 			
 		//Sending the confirmation mail
 			$to[]=Array("name"=>$name, "email"=>$_POST['email']);
