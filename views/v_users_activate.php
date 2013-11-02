@@ -1,6 +1,6 @@
 <?php if(isset($error)): ?>
 <div class='error'>
-	Activation failed. Your link is broken or user is already activated
+	Activation failed. Your link is broken or the user is already activated
 </div>
 <br>
 <?php else:?>

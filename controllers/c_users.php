@@ -26,7 +26,7 @@ public function p_activate($activation_key= NULL){
 		
 		
 		//Activating the account
-    	$q="UPDATE `users` SET  `is_activated` = '1' WHERE `users`.`user_id` ='".$user_id.'"';
+    	$q="UPDATE `users` SET  `is_activated` = '1' WHERE `users`.`user_id` ='".$user_id."'";
        
 		DB::instance(DB_NAME)->query($q);
 	     Router::redirect("/users/activate");
