@@ -24,7 +24,7 @@ $_POST['created']=Time::now();
 $_POST['modified']=Time::now();
 
 DB::instance(DB_NAME)->insert('posts',$_POST);
-echo "Your post has been added. <a href='/posts/add'>Add another</a>";
+Router::redirect("/");
 
 }
 
