@@ -1,15 +1,11 @@
-<?phpclass users_controller extends base_controller {public function __construct(){        parent::__construct();}public function index(){echo "This is the index page";}public function login($error=NULL) {        $this->template->content = View::instance('v_users_login');       $this->template->content->error=$error;        echo $this->template;}public function p_login() {    $_POST = DB::instance(DB_NAME)->sanitize($_POST);    $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);    $q = "SELECT user_id         FROM users         WHERE email = '".$_POST['email']."'         AND password = '".$_POST['password']."'";    $user_id = DB::instance(DB_NAME)->select_field($q);
-    
-        if(!$user_id) {        Router::redirect("/users/login/error");    } else {
-    
-    	$q = 'SELECT is_activated
-        FROM users 
-        WHERE user_id = "'.$user_id.'"';
+<?phpclass users_controller extends base_controller {public function __construct(){        parent::__construct();}public function index(){echo "This is the index page";}public function login($error=NULL) {        $this->template->content = View::instance('v_users_login');       $this->template->content->error=$error;        echo $this->template;}public function p_login() {    $_POST = DB::instance(DB_NAME)->sanitize($_POST);    $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);    $q = "SELECT user_id         FROM users         WHERE email = '".$_POST['email']."'         AND password = '".$_POST['password']."'";    $user_id = DB::instance(DB_NAME)->select_field($q);    if(!$user_id) {        Router::redirect("/users/login/error");    } else {
+    	$q = 'SELECT is_activated FROM users WHERE user_id = "'.$user_id.'"';
 		$is_activated = DB::instance(DB_NAME)->select_field($q);
 		if ($is_activated){
         	$q = "SELECT token FROM users WHERE user_id = '".$user_id."'";
-			$token = DB::instance(DB_NAME)->select_field($q);			setcookie("token", $token, strtotime('+1 year'), '/');			Router::redirect("/");    }else {
+			$token = DB::instance(DB_NAME)->select_field($q);			setcookie("token", $token, strtotime('+1 year'), '/');			Router::redirect("/");    } else {
             Router::redirect("/users/login/error");
+            }
             }}public function logout(){       $new_token=sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
        $data= Array("token"=>$new_token);
        DB::instance(DB_NAME)->update("users",$data, "WHERE token ='".$this->user->token."'");
