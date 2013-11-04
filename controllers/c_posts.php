@@ -28,6 +28,18 @@ Router::redirect("/");
 
 }
 
+public function like($post_id=NULL){
+/*$_POST['user_id']=$this->user->user_id;
+$_POST['created']=Time::now();
+$_POST['modified']=Time::now();
+
+DB::instance(DB_NAME)->insert('posts',$_POST);
+Router::redirect("/");*/
+
+}
+
+
+
 public function users() {
 
     $this->template->content = View::instance("v_posts_users");
@@ -74,8 +86,10 @@ public function index() {
 	$this->template->content=View::instance('v_posts_index');
 	$this->template->title="All Posts";
 	$q='SELECT 
+			posts.post_id,
 			posts.content,
 			posts.created,
+			posts.likes,
 			posts.user_id AS post_user_id,
 			users_users.user_id AS follower_id,
 			users.first_name,
