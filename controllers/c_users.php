@@ -13,7 +13,7 @@ Router::redirect("/posts");
 public function login($error=NULL) {
 
         $this->template->content = View::instance('v_users_login');
-       $this->template->content->error=$error;
+        $this->template->content->error=$error;
         echo $this->template;
 
 }
@@ -118,8 +118,21 @@ public function activate($error=NULL){
 }
 
 public function p_signup() {
+        //Checking the existence of the user
 
-		//Inserting the user into the database
+     $q = 'SELECT user_id
+        FROM users 
+        WHERE email = "'.$_POST['email'].'"';
+        $user_id = DB::instance(DB_NAME)->select_field($q);
+    if ($user_id!=NULL){
+        $error="User account already exists.";
+        $this->template->content = View::instance('v_users_signup');
+       $this->template->content->error=$error;
+        echo $this->template;
+    }
+    else{
+		
+        //Inserting the user into the database
 			$_POST['created']=Time::now();
 			$_POST['modified']=Time::now();
 			$_POST['password']=sha1(PASSWORD_SALT.$_POST['password']);
@@ -138,7 +151,8 @@ public function p_signup() {
 			$body="Dear ". $name ." this is the confirmation letter of your registration to Sblog. To activate your account please follow the <a href='". $activation_link ."'>activation link</a>";		
 			$email = Email::send($to, $from, $subject, $body, false, $cc, $bcc);
 			
-			Router::redirect('/');    
+			Router::redirect('/');
+            }    
     }
 
 }
