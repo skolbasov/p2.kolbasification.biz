@@ -147,8 +147,12 @@ public function p_signup() {
 		//Sending the confirmation mail
 			$to[]=Array("name"=>$name, "email"=>$_POST['email']);
 			$subject="Confirmation letter";
-			$from=Array("name"=>APP_NAME, "email"=>APP_EMAIL);
-			$body="Dear ". $name ." this is the confirmation letter of your registration to Sblog. To activate your account please follow the <a href='". $activation_link ."'>activation link</a>";		
+			$from=Array("name"=>APP_NAME, "email"=>APP_EMAIL);    
+            $body = View::instance('signup_email');
+            $body->name=$name;
+            $body->activation_link=$activation_link;
+
+
 			$email = Email::send($to, $from, $subject, $body, false, $cc, $bcc);
 			
 			Router::redirect('/');

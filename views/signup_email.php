@@ -9,7 +9,7 @@
 		font-style: normal;
 		font-weight: normal;
 		font-family: Helvetica, Arial, sans-serif;
-		background-image: url("../media/texture.png");
+		background-image: url("http://p2.kolbasification.biz/media/texture.png");
 		background-origin: padding-box;
 		background-size: auto;
 		background-attachment: scroll;
@@ -23,7 +23,16 @@
 
 <body>
 
-	<?php if(isset($content)) echo $content; ?>
+	 Dear <?=$name?>,
+<br>
+
+	 This is the confirmation letter of your registration to Sblog. 
+	 <br>
+
+	 To activate your account please follow the <a href=<?=$activation_link?> >activation link</a>; 
+<br>
+	 Sincerely yours,<br>
+	 SBlog administration team.
 	
 </body>
 </html>
