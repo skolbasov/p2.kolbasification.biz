@@ -12,7 +12,7 @@
 	<style>
 	body {
 		color: #000000;
-		font-size: 13px;
+		font-size: 16px;
 		font-style: normal;
 		font-weight: normal;
 		font-family: Helvetica, Arial, sans-serif;
@@ -28,7 +28,7 @@
 	}
 	.nav-item{
 		color: rgb(215, 215, 215);
-		font-size: 15px;
+		font-size: 20px;
 		font-style: normal;
 		font-weight: normal;
 		margin-bottom: 10px;
@@ -63,9 +63,12 @@
 		text-decoration: none;
 		vertical-align: baseline;
 		width: 15%;
+		font-size: 16px;
+
 	}
 	.InputField{
 		width: 15%;
+		font-size: 16px;
 
 	}
 	</style>
