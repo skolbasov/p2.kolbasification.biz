@@ -18,9 +18,10 @@
 <a href='/'>Home</a>
 <?php if ($user):?>
 <a href='/posts/add'>Add a post</a>
+<a href='/posts/users'>Members</a>
 <a href='/users/profile'>Profile</a>
 <a href='/users/logout'>Logout</a>
-<?php else: ?>
+<?php else: ?> 
 <a href='/users/signup'>Sign up</a>
 <a href='/users/login'>Log in</a>
 <?php endif; ?>
