@@ -18,7 +18,8 @@ class index_controller extends base_controller {
 		if(!$this->user){
 			$this->template->content = View::instance('v_index_index');
 			$this->template->title = "Welcome!";
-			echo $this->template;}
+			echo $this->template;
+		}
 
 else {
 	$this->template->content=View::instance('v_posts_index');
