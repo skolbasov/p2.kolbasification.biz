@@ -10,6 +10,23 @@
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	<style>
+	@media screen and (max-width: 980px) {
+	body {
+		color: #000000;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: normal;
+		font-family: Helvetica, Arial, sans-serif;
+		background-image: url("../media/phone.png");
+		background-origin: padding-box;
+		background-size: auto;
+		background-attachment: scroll;
+		background-clip: border-box;
+	}
+
+	}
+
+
 	body {
 		color: #000000;
 		font-size: 16px;
