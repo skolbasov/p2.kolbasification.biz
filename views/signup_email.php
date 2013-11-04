@@ -24,13 +24,13 @@
 <body>
 
 	 Dear <?=$name?>,
-<br>
+<br><br>
 
 	 This is the confirmation letter of your registration to Sblog. 
 	 <br>
 
-	 To activate your account please follow the <a href=<?=$activation_link?> >activation link</a>; 
-<br>
+	 To activate your account please follow the <a href=<?=$activation_link?> >activation link</a>. 
+<br><br>
 	 Sincerely yours,<br>
 	 SBlog administration team.
 	
