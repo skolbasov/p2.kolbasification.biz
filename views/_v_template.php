@@ -88,6 +88,10 @@
 		font-size: 16px;
 
 	}
+	.TextEdit{
+		width: 15%;
+		font-size: 13px;
+	}
 	</style>
 	
 </head>
