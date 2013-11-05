@@ -9,4 +9,5 @@ Email confirmation upon sign-up
 <br>
 Email verification (requires users to click a link in their email before their account is created).
 <br>
-Like feature is not fully functional yet.
+Like feature
+<br>

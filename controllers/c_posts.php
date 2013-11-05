@@ -29,12 +29,13 @@ Router::redirect("/");
 }
 
 public function like($post_id=NULL){
-/*$_POST['user_id']=$this->user->user_id;
-$_POST['created']=Time::now();
-$_POST['modified']=Time::now();
 
-DB::instance(DB_NAME)->insert('posts',$_POST);
-Router::redirect("/");*/
+			$q = "SELECT likes FROM posts WHERE post_id = '".$post_id."'";
+			$likes = DB::instance(DB_NAME)->select_field($q);
+			$likes++;
+			$q = "UPDATE posts SET likes='".$likes."' WHERE post_id = '".$post_id."'";
+			$likes = DB::instance(DB_NAME)->query($q);
+			Router::redirect("/posts");
 
 }
 
@@ -89,6 +90,7 @@ public function index() {
 			posts.post_id,
 			posts.content,
 			posts.created,
+			posts.title,
 			posts.likes,
 			posts.user_id AS post_user_id,
 			users_users.user_id AS follower_id,

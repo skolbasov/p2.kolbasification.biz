@@ -24,7 +24,8 @@ class index_controller extends base_controller {
 else {
 	$this->template->content=View::instance('v_posts_index');
 	$this->template->title="All my posts";
-	$q='SELECT * FROM posts WHERE user_id = '.$this->user->user_id;
+	$q='SELECT posts.post_id, posts.content, posts.created, posts.title, posts.likes, posts.user_id AS post_user_id, users.first_name, users.last_name
+	FROM posts INNER JOIN users ON posts.user_id = users.user_id WHERE posts.user_id ='.$this->user->user_id;
 	$posts=DB::instance(DB_NAME)->select_rows($q);
 	$this->template->content->posts=$posts;
 	echo $this->template;
