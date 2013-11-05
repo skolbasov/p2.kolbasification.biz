@@ -122,7 +122,9 @@ position:absolute;
 
 	}
 	.InputField{
-		width: 25%;
+		position: absolute;
+		left:20%;
+		width: 40%;
 		font-size: 14px;
 
 	}
