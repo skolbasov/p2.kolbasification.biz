@@ -11,7 +11,7 @@
 </time>
 <p><?=$post['likes']?> liked</p>
 </article>
-    <input type='submit' value='Like it!' class="InputButton">
+    <input type='submit' value='Like it!' class="InputButton"><br>
     <input type='submit' value='Edit' class="InputButton">
 </form>
 
