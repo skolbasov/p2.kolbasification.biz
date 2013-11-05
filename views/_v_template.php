@@ -116,7 +116,7 @@
 		text-decoration: none;
 		vertical-align: baseline;
 		width: 30%;
-position:absolute;
+position: relative;
 		left:35%;
 		font-size: 14px;
 
@@ -130,7 +130,7 @@ position:absolute;
 	}
 	.TextEdit{
 		width: 40%;
-		position: absolute;
+		position: relative;
 		left:30%;
 		font-size: 12px;
 		height: 30%;
