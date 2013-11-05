@@ -1,3 +1,7 @@
+
+
+<form method='POST' action='/users/p_login'>
+
 <?php if(isset($error)): ?>
 <div class='error'>
 	Login failed. Please check your email for the activation link. Please double check entered email and password. 
@@ -5,7 +9,6 @@
 <br>
 <?php endif; ?>
 
-<form method='POST' action='/users/p_login'>
 
     Email<br>
     <input type='text' name='email' class="InputField">
