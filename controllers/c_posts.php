@@ -6,7 +6,7 @@ public function __construct(){
 parent::__construct();
 
 if(!$this->user){
-die ("Members only. <a href='/users/login'>Login</a>");
+Router::redirect("/users/login");
 }
 }
 
