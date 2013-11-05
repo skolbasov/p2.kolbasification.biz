@@ -11,9 +11,9 @@ Router::redirect("/posts");
 }
 
 public function login($error=NULL) {
-
         $this->template->content = View::instance('v_users_login');
         $this->template->content->error=$error;
+        $this->template->title   = "Login page";
         echo $this->template;
 
 }
