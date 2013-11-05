@@ -3,7 +3,7 @@
 <head>
 	<title><?php if(isset($title)) echo $title; ?></title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
 	<script type="text/javascript" src="../js/jstz.js"></script>
 					
