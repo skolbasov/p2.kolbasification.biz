@@ -11,3 +11,4 @@ Email verification (requires users to click a link in their email before their a
 <br>
 Like feature
 <br>
+@media queries for displays thiner than 980px and 480px
