@@ -10,23 +10,6 @@
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	<style>
-	@media screen and (max-width: 980px) {
-	body {
-		color: #000000;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: normal;
-		font-family: Helvetica, Arial, sans-serif;
-		background-image: url("../media/phone.png");
-		background-origin: padding-box;
-		background-size: auto;
-		background-attachment: scroll;
-		background-clip: border-box;
-	}
-
-	}
-
-
 	body {
 		color: #000000;
 		font-size: 16px;
@@ -60,10 +43,10 @@
 		padding-right: 0px;
 		padding-top: 9px;
 		text-align: left;
-		height: 50px;
+		height: 3%;
 		text-decoration: none;
 		vertical-align: baseline;
-		width: 210px;
+		width: 10%;
 	}
 	#menu{
 		
@@ -92,6 +75,72 @@
 		width: 15%;
 		font-size: 13px;
 	}
+
+@media screen and (max-width: 980px) {
+	body {
+		font-size: 14px;
+		
+	}
+	.InputButton{
+		height: 29px;
+		text-decoration: none;
+		vertical-align: baseline;
+		width: 25%;
+		font-size: 14px;
+
+	}
+	.InputField{
+		width: 25%;
+		font-size: 14px;
+
+	}
+	.TextEdit{
+		width: 25%;
+		font-size: 12px;
+	}
+
+
+	}
+
+@media screen and (max-width: 480px) {
+	body {
+		color: #000000;
+		font-size: 14px;
+		
+		background-origin: padding-box;
+
+	}
+	.InputButton{
+		font-family: Helvetica, Arial, sans-serif;
+		height: 29px;
+		text-decoration: none;
+		vertical-align: baseline;
+		width: 30%;
+position:absolute;
+		left:35%;
+		font-size: 14px;
+
+	}
+	.InputField{
+		width: 25%;
+		font-size: 14px;
+
+	}
+	.TextEdit{
+		width: 25%;
+		font-size: 12px;
+	}
+
+	.nav-item{
+		font-size: 15px;
+		text-align: center;
+		height: 5%;
+		width:20%;
+	}
+
+
+	}
+
 	</style>
 	
 </head>
