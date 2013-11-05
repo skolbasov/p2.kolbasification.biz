@@ -123,14 +123,17 @@ position:absolute;
 	}
 	.InputField{
 		position: absolute;
-		left:20%;
-		width: 40%;
+		left:30%;
+		width:40%;
 		font-size: 14px;
 
 	}
 	.TextEdit{
-		width: 25%;
+		width: 40%;
+		position: absolute;
+		left:30%;
 		font-size: 12px;
+		height: 30%;
 	}
 
 	.nav-item{
