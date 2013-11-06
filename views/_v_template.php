@@ -106,7 +106,6 @@
 	body {
 		color: #000000;
 		font-size: 14px;
-		
 		background-origin: padding-box;
 
 	}
@@ -116,7 +115,7 @@
 		text-decoration: none;
 		vertical-align: baseline;
 		width: 30%;
-position: relative;
+		position: relative;
 		left:35%;
 		font-size: 14px;
 
@@ -152,14 +151,15 @@ position: relative;
 
 <body>	
 <div id='menu'>
-
-<a href='/' class="nav-item">Home</a>
 <?php if ($user):?>
+<a href='/posts/' class="nav-item">Feed</a>
+<a href='/' class="nav-item">My Posts</a>
 <a href='/posts/add' class="nav-item">Add a post</a>
 <a href='/posts/users' class="nav-item">Members</a>
 <a href='/users/profile' class="nav-item">Profile</a>
 <a href='/users/logout' class="nav-item">Logout</a>
 <?php else: ?> 
+<a href='/' class="nav-item">Home</a>
 <a href='/users/signup' class="nav-item">Sign up</a>
 <a href='/users/login' class="nav-item">Log in</a>
 <?php endif; ?>
