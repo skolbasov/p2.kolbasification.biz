@@ -3,9 +3,9 @@
 <form action='/posts/like/<?=$post['post_id']?>'>
 
 <article>
-<h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
-<h2><?=$post['title']?></h2>
-<p><?=$post['content']?></p>
+<h1><?=htmlentities($post['first_name'], ENT_QUOTES, 'UTF-8')?> <?=htmlentities($post['last_name'], ENT_QUOTES, 'UTF-8')?> posted:</h1>
+<h2><?=htmlentities($post['title'], ENT_QUOTES, 'UTF-8')?></h2>
+<p><?=htmlentities($post['content'], ENT_QUOTES, 'UTF-8')?></p>
 <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
 <?=Time::display($post['created'])?>
 </time>

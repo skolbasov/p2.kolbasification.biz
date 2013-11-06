@@ -7,11 +7,11 @@
 
 <form method='POST' action='/users/p_signup'>
 
-    First Name<br>
+    <label for='first_name'>First name</label><br>
     <input type='text' name='first_name' autocomplete="on" placeholder="First name" required class="InputField">
     <br><br>
 
-    Last Name<br>
+    Last name<br>
     <input type='text' name='last_name' autocomplete="on" placeholder="Last name" required class="InputField">
     <br><br>
 

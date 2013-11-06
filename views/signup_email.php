@@ -23,7 +23,7 @@
 
 <body>
 
-	 Dear <?=$name?>,
+	 Dear <?=htmlentities($name, ENT_QUOTES, 'UTF-8')?>,
 <br><br>
 
 	 This is the confirmation letter of your registration to Sblog. 
