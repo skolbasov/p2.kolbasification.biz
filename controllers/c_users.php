@@ -127,7 +127,7 @@ public function activate($error=NULL)
 public function p_signup() 
     {
         //Checking the existence of the user
-
+    $_POST = DB::instance(DB_NAME)->sanitize($_POST);
      $q = 'SELECT user_id
         FROM users 
         WHERE email = "'.$_POST['email'].'"';
